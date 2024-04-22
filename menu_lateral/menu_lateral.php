@@ -10,7 +10,6 @@ if (!isset($_SESSION['usuario'])) {
     exit; 
 }
 $usuario = $_SESSION['usuario'];
-$id_user = $_SESSION['usuario']['id'];
 ?>
 
 

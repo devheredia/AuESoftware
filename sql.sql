@@ -1,34 +1,34 @@
 -- Com não foi específicado as configurações do banco, deixei por default. 
--- banco do projeto
 CREATE SCHEMA `auesoftware` ;
 
-CREATE TABLE `cidades` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cidade` varchar(255) NOT NULL,
-  `insersor` int(11) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT 1,
-  `data_envio` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `auesoftware`.`contatos` (
+    `codcontato` INT NOT NULL AUTO_INCREMENT,
+    `nome` VARCHAR(255) NOT NULL,
+    `sexo` INT(11) NOT NULL,
+    `data` DATE NOT NULL,
+    `cidade` INT(11) NOT NULL,
+    `data_envio` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (`codcontato`));
 
+CREATE TABLE `auesoftware`.`cidades` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `cidade` VARCHAR(255) NOT NULL,
+    `insersor` INT NOT NULL,
+    `data_envio` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`));
 
-CREATE TABLE `contatos` (
-  `codcontato` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) NOT NULL,
-  `sexo` char(1) NOT NULL,
-  `data` date NOT NULL,
-  `cidade` int(11) NOT NULL,
-  `data_envio` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`codcontato`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `auesoftware`.`usuarios` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `usuario_nome` VARCHAR(45) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `data_nascimento` DATE NOT NULL,
+    `senha` VARCHAR(255) NOT NULL,
+    `permissao` INT NOT NULL,
+    `data_envio` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`));
 
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario_nome` varchar(45) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `data_nascimento` date NOT NULL,
-  `senha` varchar(255) NOT NULL,
-  `permissao` int(11) NOT NULL,
-  `data_envio` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+ALTER TABLE `auesoftware`.`cidades` 
+ADD COLUMN `status` INT(1) NOT NULL DEFAULT 1 AFTER `insersor`;
+
+ALTER TABLE `auesoftware`.`contatos` 
+CHANGE COLUMN `sexo` `sexo` CHAR(1) NOT NULL ;

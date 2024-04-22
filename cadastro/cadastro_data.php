@@ -3,8 +3,6 @@ include_once('../config.php');
 session_start();
 $user_ID = $_SESSION['usuario']['id'];
 
-
-
 if (isset($_POST['submitInserirCidades'])) {
     $nomeCidade = $_POST['cidade'];
     $check_query = "SELECT COUNT(*) AS total FROM cidades WHERE cidade = '$nomeCidade'";

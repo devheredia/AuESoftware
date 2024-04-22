@@ -1,14 +1,15 @@
 <?php
 session_start();
-if((!isset($_SESSION['nickname']) == true) and (!isset($_SESSION['senha']) == true))
-{
-    unset($_SESSION['nickname']);
+if(!isset($_SESSION['usuario_nome']) || !isset($_SESSION['senha'])) {
+    unset($_SESSION['usuario_nome']);
     unset($_SESSION['senha']);
-    header('Location: login_view.php');
+    header('Location: login_view.php?'); 
 }
-    $logado = $_SESSION['nickname'];
-    header("Location: ../cadastro/cadastro_gerenciador_cidade.php");
+
+$logado = $_SESSION['usuario_nome'];
+header("Location: ../cadastro/home.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
